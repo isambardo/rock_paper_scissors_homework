@@ -129,11 +129,20 @@
           <tr>
             <td><%= playedmove.user_move %></td>
             <td><%= playedmove.computer_move %></td>
-            <td><% playedmove.user_wins %></td>
-            <td><% playedmove.computer_wins %></td>
-            <td><% playedmove.tie %></td>
+            <td><%= playedmove.user_wins %></td>
+            <td><%= playedmove.computer_wins %></td>
+            <td><%= playedmove.tie %></td>
           </tr>
         <% end %>
+
+        <tr>
+          <th></th>
+          <th></th>
+          <th><%= @all_moves.sum(:user_wins) %></th>
+          <th><%= @all_moves.sum(:computer_wins) %></th>
+          <th><%= @all_moves.sum(:tie) %></th>
+        </tr>
+
 
       </table>
     </div>

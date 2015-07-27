@@ -34,8 +34,8 @@ class GameController < ApplicationController
     end
 
     m = Move.new
-    m.user_move = @user_move
-    m.computer_move = @computer_move
+    m.user_move = @user_move.to_s
+    m.computer_move = @computer_move.to_s
     if @outcome == "won"
       m.user_wins = 1
       m.computer_wins = 0
