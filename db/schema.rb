@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727175025) do
+ActiveRecord::Schema.define(version: 20150728150410) do
 
   create_table "moves", force: :cascade do |t|
     t.string   "user_move"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20150727175025) do
     t.integer  "user_wins"
     t.integer  "computer_wins"
     t.integer  "tie"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "summaries", force: :cascade do |t|
+    t.integer  "rock_won"
+    t.integer  "rock_lost"
+    t.integer  "rock_tied"
+    t.integer  "paper_won"
+    t.integer  "paper_lost"
+    t.integer  "paper_tied"
+    t.integer  "scissors_won"
+    t.integer  "scissors_lost"
+    t.integer  "scissors_tied"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
