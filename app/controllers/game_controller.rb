@@ -9,6 +9,7 @@ class GameController < ApplicationController
   def play
 
     @all_moves = Move.all
+    @summary_stats = Summary.all
 
     # Rails, behind the scenes:
     # params = {"move"=>"rock"}
@@ -50,6 +51,47 @@ class GameController < ApplicationController
       m.tie = 1
     end
     m.save
+
+    s = Summary.new
+    if @user_move == "rock" && @outcome == "won"
+      s.rock_won = 1
+      s.rock_lost = 0
+      s.rock_tied = 0
+    elsif @user_move == "rock" && @outcome == "lost"
+      s.rock_won = 0
+      s.rock_lost = 1
+      s.rock_tied = 0
+    elsif @user_move == "rock" && @outcome == "tie"
+      s.rock_won = 0
+      s.rock_lost = 0
+      s.rock_tied = 1
+    elsif @user_move == "paper" && @outcome == "won"
+      s.paper_won = 1
+      s.paper_lost = 0
+      s.paper_tied = 0
+    elsif @user_move == "paper" && @outcome == "lost"
+      s.paper_won = 0
+      s.paper_lost = 1
+      s.paper_tied = 0
+    elsif @user_move == "paper" && @outcome == "tie"
+      s.paper_won = 0
+      s.paper_lost = 0
+      s.paper_tied = 1
+    elsif @user_move == "scissors" && @outcome == "won"
+      s.scissors_won = 1
+      s.scissors_lost = 0
+      s.scissors_tied = 0
+    elsif @user_move == "scissors" && @outcome == "lost"
+      s.scissors_won = 0
+      s.scissors_lost = 1
+      s.scissors_tied = 0
+    elsif @user_move == "scissors" && @outcome == "tie"
+      s.scissors_won = 0
+      s.scissors_lost = 0
+      s.scissors_tied = 1
+    end
+    s.save
+
 
     render("play.html.erb")
   end

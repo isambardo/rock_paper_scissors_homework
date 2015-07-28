@@ -78,30 +78,30 @@
 
         <tr>
           <td>rock</td>
-          <td>3</td>
-          <td>0</td>
-          <td>1</td>
+          <td><%= @summary_stats.sum(:rock_won) %></td>
+          <td><%= @summary_stats.sum(:rock_lost) %></td>
+          <td><%= @summary_stats.sum(:rock_tied) %></td>
         </tr>
 
         <tr>
           <td>paper</td>
-          <td>0</td>
-          <td>1</td>
-          <td>1</td>
+          <td><%= @summary_stats.sum(:paper_won) %></td>
+          <td><%= @summary_stats.sum(:paper_lost) %></td>
+          <td><%= @summary_stats.sum(:paper_tied) %></td>
         </tr>
 
         <tr>
           <td>scissors</td>
-          <td>1</td>
-          <td>2</td>
-          <td>2</td>
+          <td><%= @summary_stats.sum(:scissors_won) %></td>
+          <td><%= @summary_stats.sum(:scissors_lost) %></td>
+          <td><%= @summary_stats.sum(:scissors_tied) %></td>
         </tr>
 
         <tr>
           <th>Total</th>
-          <th>4</th>
-          <th>3</th>
-          <th>4</th>
+          <th><%= @summary_stats.sum(:rock_won)+@summary_stats.sum(:paper_won)+@summary_stats.sum(:scissors_won) %></th>
+          <th><%= @summary_stats.sum(:rock_lost)+@summary_stats.sum(:paper_lost)+@summary_stats.sum(:scissors_lost) %></th>
+          <th><%= @summary_stats.sum(:rock_tied)+@summary_stats.sum(:paper_tied)+@summary_stats.sum(:scissors_tied) %></th>
         </tr>
       </table>
     </div>
@@ -136,7 +136,7 @@
         <% end %>
 
         <tr>
-          <th></th>
+          <th>Total</th>
           <th></th>
           <th><%= @all_moves.sum(:user_wins) %></th>
           <th><%= @all_moves.sum(:computer_wins) %></th>
